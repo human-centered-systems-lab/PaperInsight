@@ -1,0 +1,32 @@
+﻿<Window x:Class="PaperInsight.UI.StartUp"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PaperInsight.UI"
+      mc:Ignorable="d" 
+      Height="1080" Width="1920"
+      WindowState="Maximized"
+      ResizeMode="NoResize"
+      WindowStyle="None"
+      Title="StartUp">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.08*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.08*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" VerticalAlignment="Center" Margin="10">
+            <TextBlock FontSize="32" FontWeight="SemiBold"  TextWrapping="Wrap" Foreground="Black">Welcome to the experiment</TextBlock>
+        </Grid  >
+            
+        <StackPanel Grid.Row="1" Margin="30" Orientation="Vertical" VerticalAlignment="Center">
+            <TextBlock FontSize="24" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black">Please sit down comfortably and wait until the experimenter comes to your cabin.</TextBlock>
+        </StackPanel>
+        <Grid Grid.Row="2" VerticalAlignment="Center">
+            <Button x:Name="Button_Next" Content="Next" Width="100" Height="40" Margin="0,0,25,0" HorizontalAlignment="Right" VerticalAlignment="Center" Click="Button_Next_Click" Background="#FF2F75D4" Foreground="White" FontSize="14" FontWeight="DemiBold" BorderBrush="{x:Null}" />
+        </Grid>
+    </Grid>
+</Window>

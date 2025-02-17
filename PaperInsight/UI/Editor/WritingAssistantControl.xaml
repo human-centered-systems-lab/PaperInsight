@@ -1,0 +1,202 @@
+﻿<UserControl x:Class="PaperInsight.UI.Editor.WritingAssistantControl"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PaperInsight"
+      mc:Ignorable="d"
+      d:DesignHeight="750" d:DesignWidth="800">
+    <!--<Border Background="#FF191919" CornerRadius="5">-->
+    <Border Background="White" CornerRadius="5">
+        <Border.Effect>
+            <DropShadowEffect Color="#FF888888" Opacity="0.1" Direction="315.3"/>
+        </Border.Effect>
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock
+                Grid.Row="0"
+                Width="480"
+                Margin="30,10,30,10"
+                HorizontalAlignment="Left"
+                Text="How can I help you?"
+                TextAlignment="Left"
+                FontSize="24"
+                FontWeight="SemiBold" Foreground="#FF2F75D4" DockPanel.Dock="Top">
+        </TextBlock>
+        <Grid Grid.Row="2" Margin="30,10,30,10" DockPanel.Dock="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Foreground="Black" VerticalAlignment="Center" FontSize="14" FontWeight="SemiBold">Paper related</Label>
+                <WrapPanel Grid.Row="1" Orientation="Horizontal">
+                    <Button Name="ButtonQuestionPaper" Content="Ask a question about paper" Height="35" Width="180" Margin="5" Click="OnOptionQuestionClicked" Background="White" Foreground="Black" FontSize="14" BorderBrush="Black">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Button Name="ButtonSummaryPaper" Content="Summarize paper" Height="35" Width="120" Margin="5" Click="OnOptionSummaryClicked" Background="White" Foreground="Black" BorderBrush="Black" FontSize="14">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Button Name="ButtonExplainPaper" Content="Explain a word from the paper" Height="35" Width="200" Margin="5" Click="OnOptionExplainClicked" Background="White" Foreground="Black" BorderBrush="Black" FontSize="14">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </WrapPanel>
+               
+        </Grid>
+        <Grid Grid.Row="1" Margin="30,0,30,10" DockPanel.Dock="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Foreground="Black" VerticalAlignment="Center" FontSize="14" FontWeight="SemiBold">General</Label>
+                <WrapPanel Grid.Row="1" Orientation="Horizontal" >
+                    <Button Name="ButtonQuestionGeneral" Content="Ask a general question" Height="35" Width="150" Margin="5" Click="OnOptionQuestionGeneralClicked" Background="White" Foreground="Black" FontSize="14" BorderBrush="Black">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Button Name="ButtonTranslateText" Content="Translate Text" Height="35" Width="100" Margin="5" Click="OnOptionTranslateClicked" Background="White" Foreground="Black" BorderBrush="Black" FontSize="14">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Button Name="ButtonImprove" Content="Improve the text" Height="35" Width="110" Margin="5" Click="OnOptionImproveClicked" Background="White" Foreground="Black" BorderBrush="Black" FontSize="14">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Button Name="ButtonStyle" Content="Change text style" Height="35" Width="120" Margin="5" Click="OnOptionStyleClicked" Background="White" Foreground="Black" BorderBrush="Black" FontSize="14">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </WrapPanel>
+        </Grid>
+        <Label Name="LabelCommand" Grid.Row="3" FontWeight="Bold" FontSize="14" HorizontalAlignment="Left" Margin="30,0,0,0">Please enter a command</Label>
+        <Border Grid.Row="4"  BorderBrush="Black" BorderThickness="1" Margin="30,10,30,10">
+        <Grid x:Name="InputGrid" Height="170">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" x:Name="PreviousAnswerBubble" Visibility="Collapsed" Background="LightGray" CornerRadius="10" Padding="8" Margin="5" MaxHeight="55">
+                    <Grid >
+                        <TextBlock x:Name="PreviousAnswerText" TextWrapping="Wrap" FontSize="14" Text="Follow Up" Margin="0,0,25,0"/>
+                        <Button  x:Name="ButtonPreviousAnswerClose" Content="X" Width="20" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top"  Click="ButtonPreviousAnswerClose_Click" Background="#FF2F75D4" Foreground="White" FontSize="12" FontWeight="DemiBold" BorderBrush="{x:Null}">
+                            <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                            </Button.Resources>
+                        </Button>
+                    </Grid>
+                </Border>
+                    <DockPanel Grid.Row="1" LastChildFill="True">
+                        <TextBox x:Name="TextBoxInput"  TextWrapping="Wrap" AcceptsReturn="True"  FontSize="14" Text="[insert command]" DockPanel.Dock="Top"  BorderBrush="White" GotFocus="TextBoxInput_GotFocus"/>
+                 </DockPanel>
+            </Grid>
+        </Border>
+
+            <Button Grid.Row="5" Content="Get Answer" Height="40" DockPanel.Dock="Top" Margin="30,10,30,10" Click="Button_Click" Background="#FF2F75D4" Foreground="White" FontSize="14" FontWeight="DemiBold" BorderBrush="{x:Null}"/>
+        <Label Name="LabelRequest" Grid.Row="6" HorizontalAlignment="Center" Visibility="Hidden">Your request is being processed. Please wait...</Label>
+            <TextBlock
+                Grid.Row="7"
+                Width="480"
+                Margin="30,10,30,10"
+                HorizontalAlignment="Left"
+                Text="Answers"
+                TextAlignment="Left"
+                FontSize="24"
+                FontWeight="SemiBold" Foreground="#FF2F75D4" DockPanel.Dock="Top">
+            </TextBlock>
+            <ScrollViewer Grid.Row="8" x:Name="ScrollViewerMessages" Margin="30,10,30,10">
+                <ItemsControl ItemsSource="{Binding ChatMessages}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <DockPanel Grid.Row="0" Margin="5,5,5,5">
+
+                                    <!-- User's question -->
+                                    <Border Grid.Row="0" Background="LightGray" CornerRadius="10" Padding="8">
+                                        <!--<TextBlock Text="{Binding question}" Margin="5,5,5,20" TextWrapping="Wrap" FontSize="14" DockPanel.Dock="Left" />-->
+                                        <TextBlock Margin="5,5,5,20" TextWrapping="Wrap" FontSize="14" DockPanel.Dock="Right">
+                                    <Run Text="Question:"/>
+                                    <Run Text="{Binding question}"/>
+                                        </TextBlock>
+                                    </Border>
+
+                                </DockPanel>
+                                <DockPanel Grid.Row="1" Margin="5,5,5,5">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.2*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <!-- Assistant's answer -->
+                                        <Border Grid.Column="1" Background="#FF2F75D4" CornerRadius="10" Padding="8">
+                                            <!--<TextBlock Text="{Binding answer}" Margin="5,5,5,20" TextWrapping="Wrap" FontSize="14" DockPanel.Dock="Right" />-->
+                                            <TextBlock Margin="5,5,5,30" Foreground="White" TextWrapping="Wrap"  FontSize="14" DockPanel.Dock="Right">
+                                        <Run Text="Answer:"/>
+                                        <Run Text="{Binding answer}" />
+                                            </TextBlock>
+                                        </Border>
+                                    </Grid>
+                                </DockPanel>
+                                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
+                                    <Button  Content="Follow Up"  Width="80" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="FollowUpButton_Click" Background="White" Foreground="Black" FontSize="14" FontWeight="DemiBold" BorderBrush="{x:Null}">
+                                        <Button.Resources>
+                                            <Style TargetType="Border">
+                                                <Setter Property="CornerRadius" Value="5"/>
+                                            </Style>
+                                        </Button.Resources>
+                                    </Button>
+                                    <Button  Content="Copy to clipboard" Margin="5,0,0,0"  Width="130" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="CopyToClipboard_Click" Background="White" Foreground="Black" FontSize="14" FontWeight="DemiBold" BorderBrush="{x:Null}">
+                                        <Button.Resources>
+                                            <Style TargetType="Border">
+                                                <Setter Property="CornerRadius" Value="5"/>
+                                            </Style>
+                                        </Button.Resources>
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Grid>
+    </Border>
+</UserControl>
